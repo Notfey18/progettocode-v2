@@ -64,19 +64,33 @@ const sottrai = (a, b) => a - b;
 
 ---
 
-- ### Selezionare Elementi Html
+- ### Le Classi
 
-- **document.getElementByIdd("mioElemento")**: seleziona un elemento dal DOM con un ID specifico
+Le classi sono un modo per definire modelli per gli oggetti. Ti permettono di creare oggetti con le stesse proprietà e metodi.
+Le classi è un tipo di funzione che serve a creare gli oggetti.
 
-- **document.querySelector("mioElemento")**: seleziona il primo elemento che corrisponde a un selettore CSS specificato
+```
+class Persona {
+constructor(nome, cognome) {
+this.nome = nome;
+this.cognome = cognome;
+}
 
-- **document.querySelectorAll(".classeElemento")**: seleziona tutti gli elementi che corrispondono al selettore CSS specificato. Restituisce una NodeList.
+saluta() {
+console.log(`Ciao, sono ${this.nome} ${this.cognome}`);
+}
+}
 
-- **document.getElementsByClassName("classeElemento")**: restituisce una collezione HTMLCollection di tutti gli elementi che hanno una specifica classe.
+```
 
-- **document.getElementsByTagName("div")**: Restituisce una collezione HTMLCollection di tutti gli elementi con il nome del tag specificato
+Per creare un nuovo oggetto utilizzando questa classe i usa "new" :
 
-- **document.getElementsByName("nomeElemento")**: Restituisce una NodeList di tutti gli elementi con il valore dell'attributo name specificato.
+```
+
+let persona1 = new Persona("Mario", "Rossi");
+persona1.saluta(); // Stampa: Ciao, sono Mario Rossi
+
+```
 
 ---
 
@@ -89,11 +103,13 @@ Un oggetto JavaScript può essere pensato come una raccolta di coppie "chiave-va
 Un oggetto JavaScript è racchiuso tra parentesi graffe {} e può contenere zero o più coppie chiave-valore, chiamate anche "proprietà".
 
 ```
+
 var persona = {
-    nome: "Mario",
-    cognome: "Rossi",
-    eta: 30
+nome: "Mario",
+cognome: "Rossi",
+eta: 30
 };
+
 ```
 
 In questo esempio, abbiamo creato un oggetto chiamato persona con tre proprietà: nome, cognome e eta. Ogni proprietà è definita da una chiave e un valore separati da due punti (:). Le proprietà sono separate da virgole.
@@ -105,8 +121,10 @@ In questo esempio, abbiamo creato un oggetto chiamato persona con tre proprietà
 Le proprietà di un oggetto possono essere accessibili utilizzando la notazione punto . o la notazione delle parentesi quadre [].
 
 ```
-console.log(persona.nome);   // Output: Mario
+
+console.log(persona.nome); // Output: Mario
 console.log(persona["eta"]); // Output: 30
+
 ```
 
 ---
@@ -116,16 +134,18 @@ console.log(persona["eta"]); // Output: 30
 Le proprietà di un oggetto possono anche contenere funzioni, chiamate "metodi". I metodi sono azioni che possono essere eseguite sull'oggetto.
 
 ```
+
 var persona = {
-    nome: "Mario",
-    cognome: "Rossi",
-    eta: 30,
-    saluta: function() {
-        console.log("Ciao, sono " + this.nome + " " + this.cognome);
-    }
+nome: "Mario",
+cognome: "Rossi",
+eta: 30,
+saluta: function() {
+console.log("Ciao, sono " + this.nome + " " + this.cognome);
+}
 };
 
 persona.saluta(); // Output: Ciao, sono Mario Rossi
+
 ```
 
 #### Metodi "Child"
@@ -217,11 +237,13 @@ default:
 - **do...while**: il corpo del ciclo viene eseguito almeno una volta prima che la condizione venga testata. Questo è perché la condizione di verifica si trova alla fine del ciclo, non all'inizio:
 
 ```
+
 let i = 0;
 do {
-    console.log(i);
-    i++;
+console.log(i);
+i++;
 } while (i < 5);
+
 ```
 
 ---
@@ -230,26 +252,32 @@ do {
   Gli array consentono di memorizzare più valori in una singola variabile. Gli elementi di un array possono essere di qualsiasi tipo di dato: numeri, stringhe, booleani, oggetti, altre array e così via.
 
 ```
+
 let numeri = new Array(1, 2, 3, 4, 5);
 let frutta = new Array("mela", "banana", "arancia");
+
 ```
 
 **Accesso agli Elementi dell'Array**
 Puoi accedere agli elementi di un array utilizzando l'indice dell'elemento. L'indice di un array inizia da 0, quindi il primo elemento ha indice 0, il secondo ha indice 1 e così via.
 
 ```
+
 let numeri = [1, 2, 3, 4, 5];
 console.log(numeri[0]); // Output: 1
 console.log(numeri[2]); // Output: 3
+
 ```
 
 **Modifica degli Elementi dell'Array**
 Puoi modificare gli elementi di un array assegnando un nuovo valore a un indice specifico.
 
 ```
+
 let frutta = ["mela", "banana", "arancia"];
 frutta[1] = "fragola";
 console.log(frutta); // Output: ["mela", "fragola", "arancia"]
+
 ```
 
 **Proprietà e Metodi degli Array**
@@ -258,6 +286,7 @@ Gli array in JavaScript hanno molte proprietà e metodi utili per manipolarli. A
 - **length**: Restituisce il numero di elementi presenti nell'array
 
 ```
+
 let numeri = [1, 2, 3, 4, 5];
 console.log(numeri.length); // Output: 5
 
@@ -266,16 +295,53 @@ console.log(numeri.length); // Output: 5
 - **push()**: Aggiunge uno o più elementi alla fine dell'array e restituisce la nuova lunghezza dell'array.
 
 ```
+
 let numeri = [1, 2, 3];
 numeri.push(4);
 console.log(numeri); // Output: [1, 2, 3, 4]
-```
-
-**pop()**: Rimuove l'ultimo elemento dall'array e restituisce quell'elemento.
 
 ```
+
+- **pop()**: Rimuove l'ultimo elemento dall'array e restituisce quell'elemento.
+
+```
+
 let numeri = [1, 2, 3, 4];
 let elementoRimosso = numeri.pop();
 console.log(elementoRimosso); // Output: 4
 console.log(numeri); // Output: [1, 2, 3]
+
+```
+
+- **Reduce**: Questo metodo esegue una funzione di riduzione su ciascun elemento dell'array, producendo un singolo valore di output.Vuole come parametri (funzione,elemento iniziale), la funzione vuole come parametro (accumulatore, el, index, array): un accumulatore, un elemento corrente, l'indice corrente, e l'array su cui è chiamato. Puoi utilizzare reduce per eseguire operazioni come somma, calcolo di un valore massimo o minimo, concatenazione di stringhe, e molto altro.
+
+```
+
+var array = [1, 2, 3, 4, 5];
+var somma = array.reduce(function(acc, cur) {
+return acc + cur;
+}, 0); // somma diventa 15
+
+```
+
+- **Filter**: Questo metodo crea un nuovo array contenente solo gli elementi che superano un certo test definito da una funzione callback. La funzione di callback deve restituire true per gli elementi che si desidera mantenere, altrimenti restituirà false. Filter è spesso usato per rimuovere un elemento. La funzione passa (el, index, array).
+
+```
+
+var array = [1, 2, 3, 4, 5];
+var numeriPari = array.filter(function(elemento) {
+return elemento % 2 === 0;
+}); // numeriPari diventa [2, 4]
+
+```
+
+- **Map**: Questo metodo crea un nuovo array applicando una funzione a ciascun elemento dell'array su cui è chiamato. La funzione di callback viene chiamata con tre argomenti: l'elemento corrente, l'indice corrente, e l'array su cui è chiamato. È utile quando si desidera trasformare ogni elemento dell'array in un altro valore o per trovare un elemento. Costruisce un nuovo array della stressa lunghezza.
+
+```
+
+var array = [1, 2, 3, 4, 5];
+var raddoppiati = array.map(function(elemento) {
+return elemento \* 2;
+}); // raddoppiati diventa [2, 4, 6, 8, 10]
+
 ```

@@ -1,4 +1,6 @@
-/** @format */
+<!-- @format -->
+
+/\*_ @format _/
 
 // Dati
 
@@ -9,27 +11,27 @@ const studentsGroup = [];
 // Azioni
 
 function addStudentToList(studentName) {
-  students.push(studentName);
+students.push(studentName);
 }
 function randomStudent() {
-  const random = Math.random();
-  return random - 0.5;
+const random = Math.random();
+return random - 0.5;
 }
 function generateGroups() {
-  studentsGrouped = [];
-  constcopyStudent = [...students];
-  for (let i = 0; 1 < copyStudent.length; i++) {
-    const newArray = copyStudent.splice(0, groupBy);
-    studentsGrouped.push(newArray);
-  }
+studentsGrouped = [];
+constcopyStudent = [...students];
+for (let i = 0; 1 < copyStudent.length; i++) {
+const newArray = copyStudent.splice(0, groupBy);
+studentsGrouped.push(newArray);
+}
 }
 function selectGroupBy(selectedGroupBy) {
-  groupBy = selectGroupByroupBy;
+groupBy = selectGroupByroupBy;
 }
 //connetti con ui
 function onclickAddStudent() {
-  const studentName = document.getElementById('studentName').value;
-  addStudentToList(studentName);
+const studentName = document.getElementById('studentName').value;
+addStudentToList(studentName);
 }
 function onclickGenerategroups() {}
 document.getElementById('addStudent').addEventListener('click', onclickAddStudent);
